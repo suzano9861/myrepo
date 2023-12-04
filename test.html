@@ -1,0 +1,87 @@
+<h1>Authors</h1>
+<ul id="authors"></ul>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  const ul = document.getElementById('authors');
+  const list = document.createDocumentFragment();
+  const url='https://5jm60tujjk.execute-api.us-east-1.amazonaws.com/test/pets';
+  //const url = 'https://igzhpo3xwi-vpce-017fbd9b15f3cfa58.execute-api.us-east-1.amazonaws.com/dev/v1/personalization';
+  //const url = 'https://s11eu2jxg1.execute-api.us-east-1.amazonaws.com/v1/books';
+  // const url = 'https://bdyu9fucrd.execute-api.us-east-1.amazonaws.com/test/token';
+  //const url = 'https://vtxn3u4qm9.execute-api.us-east-1.amazonaws.com/test/poc/pocadobe/record';
+  //const url = 'https://nexus-api-sqe.dev.se.com/sqe/v1/profile/details';
+  //const url = 'https://mysearch-api-sqe.dev.se.com/v1/external/auto-complete';
+  //const url = 'https://lannm2f3i7wfzemo7axe5apjnm0ncgdj.lambda-url.us-east-1.on.aws/';
+  console.log('before fetch');
+	let request = new Request(url, {
+	  method: 'GET',
+	  headers: new Headers({
+		'accept': 'application/json;'
+	  }),
+	  mode: 'no-cors'
+	  //body: JSON.stringify({'text': 'intihaz'})
+	});
+	
+	fetch(request)
+    .then((response) => {
+	  return response;
+      return response.json();
+    })
+    .then((data) => {
+		console.log('fetch res : '+ data);
+    })
+    .catch(function(error) {
+      console.log('fetch error : '+ error);
+    });
+
+  //ul.appendChild(list);
+  
+	//const Http = new XMLHttpRequest();
+	//const urls='https://s11eu2jxg1.execute-api.us-east-1.amazonaws.com/v1/books';
+	//Http.open("GET", urls, true);
+	//Http.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
+	//Http.setRequestHeader('Access-Control-Allow-Origin', '*');
+	//Http.send();
+
+	//Http.onreadystatechange = (e) => {
+	 // console.log('HTTP req : '+Http.responseText)
+	//}
+	//const regex = /(?i)sesa[0-9]{9,}$/g;
+
+	// Alternative syntax using RegExp constructor
+	//const regex = new RegExp(/^sesa[0-9]{4,11}$/, "ig");
+	$(document).ready(function (){
+		function testRegex(){	
+			//var regex = /^sesa[0-9]{4,11}$/ig;
+			var regex = new RegExp(/^sesa[0-9]{4,11}$/, "ig");
+			
+			var str = 'sesa45';
+			var m;
+
+			while ((m = regex.exec(str)) !== null) {
+				// This is necessary to avoid infinite loops with zero-width matches
+				if (m.index === regex.lastIndex) {
+					regex.lastIndex++;
+				}
+				
+				// The result can be accessed through the `m`-variable.
+				//m.forEach((match, groupIndex) => {
+				//	if(m.length >= 1){
+				//		console.log(`Found match length :, ${m.length}`);
+				//	}
+				//	console.log(`Found match, group ${groupIndex}: ${match}`);
+				//});
+				console.lotg('inside while');
+				if(m.length >= 1){
+					console.log(`Found match length :, ${m.length}`);
+				}
+			}
+		}
+		
+		//console.log('inside ready');
+		//testRegex();
+	});
+
+	
+</script>

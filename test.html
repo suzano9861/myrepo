@@ -13,16 +13,15 @@
   //const url = 'https://nexus-api-sqe.dev.se.com/sqe/v1/profile/details';
   //const url = 'https://mysearch-api-sqe.dev.se.com/v1/external/auto-complete';
   //const url = 'https://lannm2f3i7wfzemo7axe5apjnm0ncgdj.lambda-url.us-east-1.on.aws/';
-  console.log('before fetch');
-	let request = new Request(url, {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  let requestObj = new Request(url, {
 	  method: 'GET',
-	  headers: new Headers({
-		'accept': 'application/json'
-	  })
-	  //body: JSON.stringify({'text': 'intihaz'})
+	  headers: myHeaders,
+	  mode: 'no-cors'
 	});
 	
-	fetch(request)
+	fetch(requestObj)
     .then((response) => {
 	  return response;
       return response.json();
